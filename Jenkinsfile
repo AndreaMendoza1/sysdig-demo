@@ -10,13 +10,13 @@ pipeline {
       steps {
         withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
           sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-          sh "docker push kmlaydin/podinfo:${env.BUILD_NUMBER}"
+          sh "docker push clouddemospe/podinfo:${env.BUILD_NUMBER}"
         }
       }
     }
     stage('Docker Remove Image') {
       steps {
-        sh "docker rmi kmlaydin/podinfo:${env.BUILD_NUMBER}"
+        sh "docker rmi clouddemospe/podinfo:${env.BUILD_NUMBER}"
       }
     }
     stage('Apply Kubernetes Files') {
