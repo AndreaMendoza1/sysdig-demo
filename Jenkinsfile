@@ -21,10 +21,10 @@ pipeline {
     }
     stage('Apply Kubernetes Files') {
       steps {
-          withKubeConfig([credentialsId: 'kubeconfig']) {
-          sh 'cat deployment.yaml | sed "s/{{BUILD_NUMBER}}/$BUILD_NUMBER/g" | kubectl apply -f -'
-          sh 'kubectl apply -f service.yaml'
-        }
+        sh "bash -x assing_ver.sh $BUILD_NUMBER"
+        sh "kubectl apply -f temp.yaml"  
+        sh "kubectl apply -f service.yaml"
+        sh "rm -f temp.yaml"
       }
   }
 }

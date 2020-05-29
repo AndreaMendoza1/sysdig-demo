@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: podinfo-deployment
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: podinfo
-        image: kmlaydin/podinfo:{{BUILD_NUMBER}}
+        image: clouddemospe/podinfo:{{BUILD_NUMBER}}
         imagePullPolicy: Always
         ports:
         - containerPort: 4444
