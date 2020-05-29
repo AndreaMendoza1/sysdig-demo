@@ -6,6 +6,11 @@ pipeline {
         sh "docker build -t clouddemospe/podinfo:${env.BUILD_NUMBER} ."
       }
     }
+    stage('Scan Image') {
+      steps {
+        sh "curl -s https://download.sysdig.com/stable/inline_scan.sh | bash -s -- analyze -s https://secure.sysdig.com -k 2310655e-9c08-4faa-b847-0aabc19a0b8e -P clouddemospe/podinfo:${env.BUILD_NUMBER}"
+      }
+    }
     stage('Docker Push') {
       steps {
         withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
