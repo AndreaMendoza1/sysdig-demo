@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Docker Build') {
       steps {
-        sh "docker build -t kmlaydin/podinfo:${env.BUILD_NUMBER} ."
+        sh "docker build -t clouddemospe/podinfo:${env.BUILD_NUMBER} ."
       }
     }
     stage('Docker Push') {
@@ -16,7 +16,7 @@ pipeline {
     }
     stage('Docker Remove Image') {
       steps {
-        sh "docker rmi kmlaydin/podinfo:${env.BUILD_NUMBER}"
+        sh "docker rmi clouddemospe/podinfo:${env.BUILD_NUMBER}"
       }
     }
     stage('Apply Kubernetes Files') {
