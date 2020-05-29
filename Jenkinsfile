@@ -21,7 +21,7 @@ pipeline {
     }
     stage('Apply Kubernetes Files') {
       steps {
-        sh "bash -x assing_ver.sh $BUILD_NUMBER"
+        sh "bash -x assign_ver.sh $BUILD_NUMBER"
       }
   }
 }
