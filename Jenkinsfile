@@ -21,8 +21,13 @@ pipeline {
     }
     stage('Apply Kubernetes Files') {
       steps {
+<<<<<<< HEAD
         sh "bash -x assing_ver.sh $BUILD_NUMBER"
         sh "kubectl apply -f temp.yaml"  
+=======
+        sh "sed s/{{BUILD_NUMBER}}/$BUILD_NUMBER/g deployment.yaml ${'>'} temp.yaml" 
+        sh "kubectl apply -f temp.yaml"
+>>>>>>> 274d806cbe0993df20dfd293fccbe9c16995ad64
         sh "kubectl apply -f service.yaml"
         sh "rm -f temp.yaml"
       }
