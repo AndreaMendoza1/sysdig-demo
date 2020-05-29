@@ -21,8 +21,10 @@ pipeline {
     }
     stage('Apply Kubernetes Files') {
       steps {
-        sh "sed s/{{BUILD_NUMBER}}/$BUILD_NUMBER/g deployment.yaml | kubectl apply -f -"
+        sh "sed s/{{BUILD_NUMBER}}/$BUILD_NUMBER/g deployment.yaml > temp.yaml" 
+        sh "kubectl apply -f temp.yaml"
         sh "kubectl apply -f service.yaml"
+        sh "rm -f temp.yaml"
       }
   }
 }
