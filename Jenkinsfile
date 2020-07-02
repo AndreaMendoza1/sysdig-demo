@@ -8,8 +8,8 @@ pipeline {
     }
     stage('Scan Image') {
       steps {
-        sh "curl -s https://download.sysdig.com/stable/inline_scan.sh | bash -s -- analyze -s https://secure.sysdig.com -k 2310655e-9c08-4faa-b847-0aabc19a0b8e -P clouddemospe/podinfo:${env.BUILD_NUMBER}"
-        slackSend(message: "Imagen Scaneada con Sysdig Secure: clouddemospe/podinfo:${env.BUILD_NUMBER}, ver https://secure.sysdig.com")
+        sh "curl -s https://download.sysdig.com/stable/inline_scan.sh | bash -s -- analyze -s https://secure.sysdig.com -k 95bface6-74d7-418c-9154-ff64abbdd1af -P clouddemospe/podinfo:${env.BUILD_NUMBER}"
+        slackSend(message: "Imagen clouddemospe/podinfo:${env.BUILD_NUMBER} escaneada con Sysdig Secure, mas detalle en https://secure.sysdig.com")
       }
     }
     stage('Docker Push') {
@@ -33,10 +33,10 @@ pipeline {
 }
 post {
     success {
-      slackSend(message: "Pipeline is successfully completed.")
+      slackSend(message: "Pipeline completado correctamente.")
     }
     failure {
-      slackSend(message: "Pipeline failed. Please check the logs.")
+      slackSend(message: "Pipeline fallido. Por favor revisar las bitacoras.")
     }
 }
 }
