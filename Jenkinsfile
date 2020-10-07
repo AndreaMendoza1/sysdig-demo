@@ -16,7 +16,7 @@ pipeline {
     }
     stage('Scan Image') {
       steps {
-        sh "curl -s https://download.sysdig.com/stable/inline_scan.sh | bash -s -- analyze -s https://secure.sysdig.com -k 95bface6-74d7-418c-9154-ff64abbdd1af -R -P clouddemospe/podinfo:${env.BUILD_NUMBER}"
+        sh "curl -s https://download.sysdig.com/stable/inline_scan.sh | bash -s -- analyze -s https://secure.sysdig.com -k 95bface6-74d7-418c-9154-ff64abbdd1af -R /home/reports -P clouddemospe/podinfo:${env.BUILD_NUMBER}"
         slackSend(message: "Imagen clouddemospe/podinfo:${env.BUILD_NUMBER} escaneada con Sysdig Secure, mas detalle ver en https://secure.sysdig.com")
       }
     }
