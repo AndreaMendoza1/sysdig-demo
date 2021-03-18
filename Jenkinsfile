@@ -33,10 +33,10 @@ pipeline {
 }
 post {
     success {
-      slackSend(message: "Pipeline completado correctamente.")
+      //slackSend(message: "Pipeline completado correctamente.")
     }
     failure {
-      slackSend(message: "Pipeline fallido. Por favor revisar las bitacoras.")
+      //slackSend(message: "Pipeline fallido. Por favor revisar las bitacoras.")
     }
 }
 }
