@@ -17,7 +17,7 @@ pipeline {
     stage('Scan Image') {
       steps {
         sh "docker run --rm quay.io/sysdig/secure-inline-scan:2 clouddemospe/podinfo:${env.BUILD_NUMBER} -k 95bface6-74d7-418c-9154-ff64abbdd1af -s https://secure.sysdig.com"
-        slackSend(message: "Imagen clouddemospe/podinfo:${env.BUILD_NUMBER} escaneada con Sysdig, mas detalle ver en https://secure.sysdig.com")
+        slackSend(message: "Imagen clouddemospe/podinfo:${env.BUILD_NUMBER} escaneada con Sysdig, mas detalle ver en el link https://secure.sysdig.com")
       }
     }
     stage('Docker Remove Image') {
