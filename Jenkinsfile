@@ -37,6 +37,6 @@ post {
     }
     failure {
       slackSend(message: "Pipeline fallido. Por favor revisar los logs.")
-    }
+    } 
 }
 }
