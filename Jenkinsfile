@@ -3,6 +3,7 @@ pipeline {
   stages {
     stage('Docker Build') {
       steps {
+        sh "docker build --no-cache -t u12_core -f u12_core ."
         sh "docker build -t clouddemospe/podinfo:${env.BUILD_NUMBER} ."
       }
     }
