@@ -4,7 +4,6 @@ pipeline {
     stage('Docker Build') {
       steps {
         sh "docker build --no-cache -t clouddemospe/podinfo:${env.BUILD_NUMBER} ."
-        sh "./entrypoint.sh $BUILD_NUMBER"
       }
     }
     stage('Docker Push') {
