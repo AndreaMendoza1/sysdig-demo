@@ -2,10 +2,10 @@ FROM node:10-alpine
 
 # Create and define the node_modules's cache directory.
 # Install the application's dependencies into the node_modules's cache directory.
-RUN mkdir /usr/src/cache
+RUN mkdir /cache
 COPY package.json ./
 COPY package-lock.json ./
-WORKDIR /usr/src/cache
+WORKDIR /cache
 
 RUN mkdir /app
 COPY index.js /app
