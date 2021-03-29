@@ -4,9 +4,7 @@ RUN mkdir /app
 COPY index.js /app
 WORKDIR /app
 RUN npm update -g
-RUN rm -rf node_modules
-RUN npm cache clean --force
-RUN npm install
 RUN npm install express
+RUN npm install --save @types/cookies
 EXPOSE 4444
 CMD ["node", "index.js"]
