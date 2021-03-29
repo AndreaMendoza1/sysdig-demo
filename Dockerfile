@@ -1,16 +1,10 @@
 FROM node:10-alpine
 
-# Create and define the node_modules's cache directory.
-# Install the application's dependencies into the node_modules's cache directory.
-RUN mkdir /cache
-COPY package.json ./
-COPY package-lock.json ./
-WORKDIR /cache
-
 RUN mkdir /app
 COPY index.js /app
 WORKDIR /app
 
+RUN npm update -g
 RUN npm install express
 
 EXPOSE 4444
