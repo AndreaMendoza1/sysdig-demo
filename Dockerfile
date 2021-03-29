@@ -5,7 +5,8 @@ COPY index.js /app
 WORKDIR /app
 
 RUN npm install express
-RUN npm update -g
+RUN npm install -g npm-check-updates/
+    npm rm --save ssri
 RUN npm install ssri@8.0.1
 
 EXPOSE 4444
