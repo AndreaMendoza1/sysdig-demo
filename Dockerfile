@@ -4,7 +4,8 @@ RUN mkdir /app
 COPY index.js /app
 WORKDIR /app
 
-RUN npm update -g
+RUN rm -rf /usr/local/lib/node_modules*
+
 RUN npm install express
 
 EXPOSE 4444
