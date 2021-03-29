@@ -14,7 +14,6 @@ COPY index.js /app
 WORKDIR /app
 
 RUN npm install express
-RUN npm update -g
 
 EXPOSE 4444
 
