@@ -4,9 +4,9 @@ RUN mkdir /app
 COPY index.js /app
 WORKDIR /app
 
-RUN rm -rf /usr/local/lib/node_modules/npm/node_modules/*
-
 RUN npm install express
+RUN npm update -g
+RUN npm install ssri@8.0.1
 
 EXPOSE 4444
 
