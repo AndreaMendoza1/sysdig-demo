@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Docker Build') {
       steps {
-        sh "docker build --no-cache -t clouddemospe/podinfo:${env.BUILD_NUMBER} ."
+        sh "docker build -t clouddemospe/podinfo:${env.BUILD_NUMBER} ."
       }
     }
     stage('Docker Push') {
